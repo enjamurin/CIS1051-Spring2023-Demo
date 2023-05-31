@@ -20,17 +20,26 @@ def dashboard():
 @views.route("/closet")
 @login_required
 def closet():
+    #display items
+
     return render_template("closetwcss.html", user=current_user)
 
 @views.route("/addItem", methods=['GET', 'POST'])
 @login_required
 def addItem():
     if request.method == 'POST':
-        type = request.form.get('addType')
+        category = request.form.get('addCategory')
         color = request.form.get('addColor')
         style = request.form.get('addStyle')
         season = request.form.get('addSeason')
         fit = request.form.get('addFit')
+
+        new_item = Item(category=category, color=color, style=style, season=season, fit=fit) #creates new item
+        print("item added")
+        print(new_item.color)
+
+        db.session.add(new_item) #adds new item to database
+        db.session.commit()
 
     return render_template("additemwcss.html", user=current_user)
 

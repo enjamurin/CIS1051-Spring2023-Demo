@@ -9,8 +9,17 @@ CREATE TABLE user_info (
 CREATE TABLE closet (
     id TEXT NOT NULL PRIMARY KEY,
     user_id TEXT NOT NULL,
-    closet_ame TEXT NOT NULL,
+    closet_name TEXT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES user_info (id)
 );
 
+CREATE TABLE items (
+    id TEXT NOT NULL PRIMARY KEY,
+    category TEXT NOT NULL,
+    color TEXT NOT NULL,
+    season TEXT NOT NULL,
+    style TEXT NOT NULL,
+    fit TEXT NOT NULL,
+    FOREIGN KEY (closet_id) REFERENCES closet (id)
+)
     
