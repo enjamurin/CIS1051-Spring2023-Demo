@@ -21,7 +21,7 @@ Ex: Closet named "Hawaii Trip" includes swimsuit, flipflops and white shirt, whi
 ## Structure
 Front end: HTML, CSS, Javascript
 
-Backend: SQLAlchemy/SQLite, Flask framework
+Backend: Flask framework utilizing SQLAlchemy to access SQLite database
 
 ## Download and Install the Following
 - Git Bash: include pip and add to Path
