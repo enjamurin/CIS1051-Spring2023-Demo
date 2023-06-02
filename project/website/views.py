@@ -15,6 +15,13 @@ def home():
 @views.route("/dashboard")
 @login_required
 def dashboard():
+    users = User.query.all()
+
+    for person in users:
+        print(person.password)
+
+    print(users)
+
     return render_template("dashboardwcss.html", user=current_user)
 
 @views.route("/closet")
@@ -34,7 +41,7 @@ def addItem():
         season = request.form.get('addSeason')
         fit = request.form.get('addFit')
 
-        new_item = Item(category=category, color=color, style=style, season=season, fit=fit) #creates new item
+        new_item = Item(category=category, color=color, style=style, season=season, fit=fit, ) #creates new item
         print("item added")
         print(new_item.color)
 
@@ -50,6 +57,9 @@ def addCloset():
         name = request.form.get('closetName')
 
         new_closet = Closet(closet_name=name, user_id=current_user.id)
+
         db.session.add(new_closet)
         db.session.commit()
+
+        print(new_closet.closet_name)
     return render_template("createcloset.html", user=current_user)

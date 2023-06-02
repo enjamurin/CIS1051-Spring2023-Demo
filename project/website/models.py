@@ -3,6 +3,7 @@ from flask_login import UserMixin
 from sqlalchemy.sql import func
 
 class Closet(db.Model):
+    __tablename__= 'closet'
     id = db.Column(db.Integer, primary_key=True)
     closet_name = db.Column(db.String(200), nullable=False)
     items = db.relationship('Item', backref='closet', lazy=True)
@@ -12,6 +13,7 @@ class Closet(db.Model):
         User.closets.append(self)
 
 class Item(db.Model):
+    __tablename__= 'item'
     id = db.Column(db.Integer, primary_key=True)
     category = db.Column(db.String(50))
     color = db.Column(db.String(50))
@@ -20,8 +22,8 @@ class Item(db.Model):
     fit = db.Column(db.String(50))
     closet_id = db.Column(db.Integer, db.ForeignKey('closet.id'))
 
-    def addItem(self): #adds item to closet
-        Closet.items.append(self)
+   # def addItem(self): #adds item to closet
+   #     Closet.items.append(self)
 
 class User(db.Model, UserMixin):
     __tablename__= 'user_info'

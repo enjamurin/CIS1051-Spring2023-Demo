@@ -6,6 +6,8 @@ CREATE TABLE user_info (
     pwd TEXT NOT NULL
 );
 
+DROP TABLE closet;
+
 CREATE TABLE closet (
     id TEXT NOT NULL PRIMARY KEY,
     user_id TEXT NOT NULL,
@@ -13,7 +15,10 @@ CREATE TABLE closet (
     FOREIGN KEY (user_id) REFERENCES user_info (id)
 );
 
-CREATE TABLE items (
+DROP TABLE items;
+DROP TABLE item;
+
+CREATE TABLE item (
     id TEXT NOT NULL PRIMARY KEY,
     category TEXT NOT NULL,
     color TEXT NOT NULL,
@@ -22,4 +27,4 @@ CREATE TABLE items (
     fit TEXT NOT NULL,
     FOREIGN KEY (closet_id) REFERENCES closet (id)
 )
-    
+

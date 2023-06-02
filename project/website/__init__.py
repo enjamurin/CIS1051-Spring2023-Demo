@@ -34,7 +34,18 @@ def create_app():
     def load_user(id):
         return User.query.get(int(id))     
     
+    #print_table(db, 'item')
+
     return app
+
+def print_table(db, table_name):
+    engine = db.create_engine('sqlite:///database.db')
+    connection = engine.connect()
+    metadata = db.MetaData()
+    table_info = db.Table(table_name, metadata, autoload=True, autoload_with=engine)
+
+    print(table_info.columns.keys())
+    print(repr(metadata.tables[table_name]))
 
 def create_database(app):
     with app.app_context():

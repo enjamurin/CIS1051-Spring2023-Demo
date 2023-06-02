@@ -46,7 +46,7 @@ def signup():
         password2 = request.form.get('pwd2')
 
         user = User.query.filter_by(userName=userName).first()
-
+        
         if user:
             flash('This username already exists.', category='error')
             print(userName, 'username already exists')
