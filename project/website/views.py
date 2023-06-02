@@ -18,9 +18,16 @@ def dashboard():
     users = User.query.all()
 
     for person in users:
-        print(person.password)
+        print(person.firstName)
+        print(person.lastName)
 
     print(users)
+
+    items = Item.query.all()
+
+    for thing in items:
+        print(thing.color)
+
 
     return render_template("dashboardwcss.html", user=current_user)
 
